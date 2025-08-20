@@ -1,7 +1,8 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
-# Título do repositório
+# Projeto Agenda Poli
 
-Descrição curta do repositório.
+Um sistema de agendamento para salas para professores agendarem horários e alunos visitarem o agendamento
+de salas, com um administrador geral para o sistema
 
 ## Sumário
 
@@ -9,13 +10,9 @@ Descrição curta do repositório.
 * [Instalação](#instalação)
 * [Instruções de uso](#instruções-de-uso)
 * [Contato](#contato)
-* [Bibliografia](#bibliografia)
+* [Documentação](#documentacao)
 
 ## Pré-requisitos
-
-Descreva aqui brevemente os pré-requisitos necessários para executar o código-fonte. Descreva também
-a configuração mínima da máquina em que o código foi desenvolvido, e se alguma configuração em particular é essencial
-para sua execução (por exemplo, placa de vídeo dedicada):
 
 | Configuração        | Valor                    |
 |---------------------|--------------------------|
@@ -27,16 +24,18 @@ para sua execução (por exemplo, placa de vídeo dedicada):
 
 ## Instalação
 
-Descreva aqui as instruções para instalação das ferramentas para execução do código-fonte: 
+- IDE VsCode **obrigatótio**
+- Intellij **opcional mas recomendado**
+- Docker (com wsl se for windowns) **obrigatório**
+- Postgres + pgadmin **opcional mas recomendado se não tiver docker**
+- JDK21 **obrigatório**
+- nodeJS **obrigatório**
 
 ```bash
 sudo apt-get install nano
 ```
 
 ## Instruções de Uso
-
-Descreva aqui o passo-a-passo que outros usuários precisam realizar para conseguir executar com sucesso o código-fonte
-deste projeto:
 
 ```bash
 echo "olá mundo!"
@@ -46,8 +45,6 @@ echo "olá mundo!"
 
 O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
 
-## Bibliografia
-
-Adicione aqui entradas numa lista com a documentação pertinente:
-
+## documentacao de apoio
+* [link para o figma](https://www.figma.com/design/cZoiSPsSOjAio7jQksXsnF/Marca%C3%A7%C3%A3o-de-sala--Eng-De-Software-?node-id=0-1&t=VGR2Ehy1dGJEXv2G-1)
 * [Documentação coplin-db2](https://pypi.org/project/coplin-db2/)
