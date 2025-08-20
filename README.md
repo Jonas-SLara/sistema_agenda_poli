@@ -26,7 +26,7 @@ de salas, com um administrador geral para o sistema
 
 - IDE VsCode **obrigatótio**
 - Intellij **opcional mas recomendado**
-- Docker (com wsl se for windowns) **obrigatório**
+- Docker (com wsl se for windows) **obrigatório**
 - Postgres + pgadmin **opcional mas recomendado se não tiver docker**
 - JDK21 **obrigatório**
 - nodeJS **obrigatório**
