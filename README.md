@@ -12,6 +12,9 @@ de salas, com um administrador geral para o sistema
 * [Contato](#contato)
 * [Documentação](#documentacao)
 
+## Modelo ER
+![Modelo ER](modeloER.png)
+
 ## Pré-requisitos
 
 | Configuração        | Valor                    |
