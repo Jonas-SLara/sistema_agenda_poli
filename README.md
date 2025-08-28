@@ -1,4 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
+
 # Projeto Agenda Poli
 
 Um sistema de agendamento para salas para professores agendarem horários e alunos visitarem o agendamento
@@ -6,24 +7,32 @@ de salas, com um administrador geral para o sistema
 
 ## Sumário
 
-* [Pré-requisitos](#pré-requisitos)
-* [Instalação](#instalação)
-* [Instruções de uso](#instruções-de-uso)
-* [Contato](#contato)
-* [Documentação](#documentacao)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Instruções de uso](#instruções-de-uso)
+- [Contato](#contato)
+- [Docum:entação](#documentacao)
 
 ## Modelo ER
-![Modelo ER](modeloER.png)
+
+![Modelo ER](docs/modeloER.png)
+
+## Histórias do usuário
+![Histórias do usuario](docs/userHistories.png)
+
+## Telas pricipais
+![Tela 1](docs/tela1.png)
+
+![Tela 1](docs/tela2.png)
 
 ## Pré-requisitos
 
 | Configuração        | Valor                    |
-|---------------------|--------------------------|
+| ------------------- | ------------------------ |
 | Sistema operacional | Windows 10 Pro (64 bits) |
 | Processador         | Intel core i7 9700       |
 | Memória RAM         | 16GB                     |
 | Necessita rede?     | Sim                      |
-
 
 ## Instalação
 
@@ -49,5 +58,6 @@ echo "olá mundo!"
 O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
 
 ## documentacao de apoio
-* [link para o figma](https://www.figma.com/design/cZoiSPsSOjAio7jQksXsnF/Marca%C3%A7%C3%A3o-de-sala--Eng-De-Software-?node-id=0-1&t=VGR2Ehy1dGJEXv2G-1)
-* [Documentação coplin-db2](https://pypi.org/project/coplin-db2/)
+
+- [link para o figma](https://www.figma.com/design/cZoiSPsSOjAio7jQksXsnF/Marca%C3%A7%C3%A3o-de-sala--Eng-De-Software-?node-id=0-1&t=VGR2Ehy1dGJEXv2G-1)
+- [Documentação coplin-db2](https://pypi.org/project/coplin-db2/)
