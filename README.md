@@ -1,63 +1,104 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
+# Projeto Agenda Pol
 
-# Projeto Agenda Poli
-
-Um sistema de agendamento para salas para professores agendarem horários e alunos visitarem o agendamento
-de salas, com um administrador geral para o sistema
+> [!NOTE]
+> Um sistema de agendamento para salas para professores agendarem horários e alunos visualizarem o agendamento de salas, com um administrador geral para o sistema
+___
 
 ## Sumário
 
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Instruções de uso](#instruções-de-uso)
-- [Contato](#contato)
-- [Docum:entação](#documentacao)
+### **DEPENDÊNCIAS**
+   1. [dependencias](#dependencias)
 
-## Modelo ER
+### **DEPLOY**
+   1. [deploy do backend](#deploy-backend)
 
-![Modelo ER](docs/modeloER.png)
+### **BACKEND**
+   1. [modeloER](#modelo-er)
+   2. [Funcionalidades](#funcionalidades)
+   3. [regras](#regras)
 
-## Histórias do usuário
-![Histórias do usuario](docs/userHistories.png)
+### **FRONTEND**
+   1. [figma](#link-figma)
+   2. [protótipos](#protótipos)
+   3. [funcionalidades](#funcionalidades)
+___
 
-## Telas pricipais
-![Tela 1](docs/tela1.png)
+## DEPENDÊNCIAS
+> [!NOTE]
+> Todas as dependencias serão gerenciadas pelo docker em ambientes isolados cabendo ao desenvolvedor ter o docker devidamente instalado no seu sistema
 
-![Tela 1](docs/tela2.png)
+- JDK21
+- docker
+- npm
+- nodejs
+- visual studio / intellij
+- ambiente linux (wsl, ou maquina virtual)
+___
 
-## Pré-requisitos
+## DEPLOY
 
-| Configuração        | Valor                    |
-| ------------------- | ------------------------ |
-| Sistema operacional | Windows 10 Pro (64 bits) |
-| Processador         | Intel core i7 9700       |
-| Memória RAM         | 16GB                     |
-| Necessita rede?     | Sim                      |
+### deploy backend
 
-## Instalação
-
-- IDE VsCode **obrigatótio**
-- Intellij **opcional mas recomendado**
-- Docker (com wsl se for windows) **obrigatório**
-- Postgres + pgadmin **opcional mas recomendado se não tiver docker**
-- JDK21 **obrigatório**
-- nodeJS **obrigatório**
-
-```bash
-sudo apt-get install nano
-```
-
-## Instruções de Uso
+Estando na pasta /backed execute:
 
 ```bash
-echo "olá mundo!"
+docker compose up -d
 ```
 
-## Contato
+>[!NOTE]
+>Verifique os serviços:
 
-O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
+>```bash
+>docker ps
+>docker logs dbAgenda
+>docker logs adminAgenda
+>```
 
-## documentacao de apoio
+Neste ponto a API já esta sendo executada se preferir acesse a interface grafica do pgadmin
+com o seguinte link na url do seu navegador
+
+```bash
+http://localhost:5050
+```
+
+![interface grafica do pgadmin web](/docs/adminAgenda.png)
+
+insira as credencias do pgadmin definido nas variaveis de ambiente e configure um servidor novo
+colocando o nome do host como o nome do container do banco ou seu endereço ip, senha usuario e nome do banco
+
+![interface gráfica do pgadmin web](/docs/adminAgendaServer.png.png)
+___
+
+## **BACKEND**
+
+### modelo ER
+![modelo er](/docs/modeloER.png)
+
+### funcionalidades
+- [ ] Haverá um usuário administrador que cadastra professores e salas
+- [ ] Os professores cadastram eventos e quando criam um agendameno estão associando um evento a uma sala
+- [ ] Nos agendamento que são por formato data hora[yy-mm-dd hh-mm-ss] os professores e alunos poderão consultar as salas ocupadas em um período específico de tempo, mostrando o nome e o horário com o tipo da sala e evento 
+- [ ] Os professores e alunos também poderão ver as salas livres em um período de tempo
+- [ ] Os professores podem associar um evento a uma sala que estiver livre naquele período
+- [ ] Tanto os professores como alunos poderão filtrar
+salas por tipo, e prédio
+- [ ] Tanto professores e alunos poderão pesquisar os agendamentos em uma sala e filtrar por uma data e tipo de evento
+- [ ] os professores podem editar o evento
+- [ ] os professores podem editar o horário do agendamento bem como cancelar(excluir)
+
+### regras
+- [ ] a aplicação deve verificar se o evento que o professor deseja associar a aquela sala
+não entrará em conflito com horário a outro evento
+- [ ] os professores não podem editar nem excluir agendamentos depois que a data do evento passar da data atual, afim de preservar o histórico
+- [ ] os professores e o administrador devem ser autenticados com credenciais próprias
+___
+
+## **FRONTEND**
+
+### link figma
 
 - [link para o figma](https://www.figma.com/design/cZoiSPsSOjAio7jQksXsnF/Marca%C3%A7%C3%A3o-de-sala--Eng-De-Software-?node-id=0-1&t=VGR2Ehy1dGJEXv2G-1)
-- [Documentação coplin-db2](https://pypi.org/project/coplin-db2/)
+
+### protótipos
+
+### funcionalidades
