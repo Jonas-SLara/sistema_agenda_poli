@@ -2,27 +2,28 @@
 
 > [!NOTE]
 > Um sistema de agendamento para salas para professores agendarem horários e alunos visualizarem o agendamento de salas, com um administrador geral para o sistema
+___
 
 ## Sumário
 
-1. **dependencias**
+### **DEPENDÊNCIAS**
    1. [dependencias](#dependencias)
 
-2. **Deploy**
+### **DEPLOY**
    1. [deploy do backend](#deploy-backend)
 
-3. **Backend**
+### **BACKEND**
    1. [modeloER](#modelo-er)
    2. [Funcionalidades](#funcionalidades)
-   3. [Arquitetura da API](#arquitetura-da-api)
-   4. [regras de negocio](#regras-de-negócio)
+   3. [regras](#regras)
 
-4. **Frontend**
+### **FRONTEND**
    1. [figma](#link-figma)
    2. [protótipos](#protótipos)
    3. [funcionalidades](#funcionalidades)
+___
 
-## dependências
+## DEPENDÊNCIAS
 > [!NOTE]
 > Todas as dependencias serão gerenciadas pelo docker em ambientes isolados cabendo ao desenvolvedor ter o docker devidamente instalado no seu sistema
 
@@ -32,8 +33,9 @@
 - nodejs
 - visual studio / intellij
 - ambiente linux (wsl, ou maquina virtual)
+___
 
-## deploy
+## DEPLOY
 
 ### deploy backend
 
@@ -65,19 +67,33 @@ insira as credencias do pgadmin definido nas variaveis de ambiente e configure u
 colocando o nome do host como o nome do container do banco ou seu endereço ip, senha usuario e nome do banco
 
 ![interface gráfica do pgadmin web](/docs/adminAgendaServer.png.png)
+___
 
-## Backend do sistema
+## **BACKEND**
 
 ### modelo ER
 ![modelo er](/docs/modeloER.png)
 
 ### funcionalidades
+- [ ] Haverá um usuário administrador que cadastra professores e salas
+- [ ] Os professores cadastram eventos e quando criam um agendameno estão associando um evento a uma sala
+- [ ] Nos agendamento que são por formato data hora[yy-mm-dd hh-mm-ss] os professores e alunos poderão consultar as salas ocupadas em um período específico de tempo, mostrando o nome e o horário com o tipo da sala e evento 
+- [ ] Os professores e alunos também poderão ver as salas livres em um período de tempo
+- [ ] Os professores podem associar um evento a uma sala que estiver livre naquele período
+- [ ] Tanto os professores como alunos poderão filtrar
+salas por tipo, e prédio
+- [ ] Tanto professores e alunos poderão pesquisar os agendamentos em uma sala e filtrar por uma data e tipo de evento
+- [ ] os professores podem editar o evento
+- [ ] os professores podem editar o horário do agendamento bem como cancelar(excluir)
 
-### arquitetura da API
+### regras
+- [ ] a aplicação deve verificar se o evento que o professor deseja associar a aquela sala
+não entrará em conflito com horário a outro evento
+- [ ] os professores não podem editar nem excluir agendamentos depois que a data do evento passar da data atual, afim de preservar o histórico
+- [ ] os professores e o administrador devem ser autenticados com credenciais próprias
+___
 
-### regras de negócio
-
-## Frontend do sistema
+## **FRONTEND**
 
 ### link figma
 
