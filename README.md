@@ -1,63 +1,88 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
+# Projeto Agenda Pol
 
-# Projeto Agenda Poli
-
-Um sistema de agendamento para salas para professores agendarem horários e alunos visitarem o agendamento
-de salas, com um administrador geral para o sistema
+> [!NOTE]
+> Um sistema de agendamento para salas para professores agendarem horários e alunos visualizarem o agendamento de salas, com um administrador geral para o sistema
 
 ## Sumário
 
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Instruções de uso](#instruções-de-uso)
-- [Contato](#contato)
-- [Docum:entação](#documentacao)
+1. **dependencias**
+   1. [dependencias](#dependencias)
 
-## Modelo ER
+2. **Deploy**
+   1. [deploy do backend](#deploy-backend)
 
-![Modelo ER](docs/modeloER.png)
+3. **Backend**
+   1. [modeloER](#modelo-er)
+   2. [Funcionalidades](#funcionalidades)
+   3. [Arquitetura da API](#arquitetura-da-api)
+   4. [regras de negocio](#regras-de-negócio)
 
-## Histórias do usuário
-![Histórias do usuario](docs/userHistories.png)
+4. **Frontend**
+   1. [figma](#link-figma)
+   2. [protótipos](#protótipos)
+   3. [funcionalidades](#funcionalidades)
 
-## Telas pricipais
-![Tela 1](docs/tela1.png)
+## dependências
+> [!NOTE]
+> Todas as dependencias serão gerenciadas pelo docker em ambientes isolados cabendo ao desenvolvedor ter o docker devidamente instalado no seu sistema
 
-![Tela 1](docs/tela2.png)
+- JDK21
+- docker
+- npm
+- nodejs
+- visual studio / intellij
+- ambiente linux (wsl, ou maquina virtual)
 
-## Pré-requisitos
+## deploy
 
-| Configuração        | Valor                    |
-| ------------------- | ------------------------ |
-| Sistema operacional | Windows 10 Pro (64 bits) |
-| Processador         | Intel core i7 9700       |
-| Memória RAM         | 16GB                     |
-| Necessita rede?     | Sim                      |
+### deploy backend
 
-## Instalação
-
-- IDE VsCode **obrigatótio**
-- Intellij **opcional mas recomendado**
-- Docker (com wsl se for windows) **obrigatório**
-- Postgres + pgadmin **opcional mas recomendado se não tiver docker**
-- JDK21 **obrigatório**
-- nodeJS **obrigatório**
+Estando na pasta /backed execute:
 
 ```bash
-sudo apt-get install nano
+docker compose up -d
 ```
 
-## Instruções de Uso
+>[!NOTE]
+>Verifique os serviços:
+
+>```bash
+>docker ps
+>docker logs dbAgenda
+>docker logs adminAgenda
+>```
+
+Neste ponto a API já esta sendo executada se preferir acesse a interface grafica do pgadmin
+com o seguinte link na url do seu navegador
 
 ```bash
-echo "olá mundo!"
+http://localhost:5050
 ```
 
-## Contato
+![interface grafica do pgadmin web](/docs/adminAgenda.png)
 
-O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
+insira as credencias do pgadmin definido nas variaveis de ambiente e configure um servidor novo
+colocando o nome do host como o nome do container do banco ou seu endereço ip, senha usuario e nome do banco
 
-## documentacao de apoio
+![interface gráfica do pgadmin web](/docs/adminAgendaServer.png.png)
+
+## Backend do sistema
+
+### modelo ER
+![modelo er](/docs/modeloER.png)
+
+### funcionalidades
+
+### arquitetura da API
+
+### regras de negócio
+
+## Frontend do sistema
+
+### link figma
 
 - [link para o figma](https://www.figma.com/design/cZoiSPsSOjAio7jQksXsnF/Marca%C3%A7%C3%A3o-de-sala--Eng-De-Software-?node-id=0-1&t=VGR2Ehy1dGJEXv2G-1)
-- [Documentação coplin-db2](https://pypi.org/project/coplin-db2/)
+
+### protótipos
+
+### funcionalidades

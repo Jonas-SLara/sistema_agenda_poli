@@ -46,9 +46,9 @@ CREATE TABLE agendamento(
     data_hora_fim TIMESTAMP,
     CONSTRAINT check_horario CHECK (data_hora_inicio < data_hora_fim),
     CONSTRAINT unique_agenda UNIQUE(id_sala, data_hora_inicio, data_hora_fim)
-)
+);
 
---criar um indice gist para otimizar consultas na agenda
-CREATE INDEX idx_periodo ON agendamento USING gist (tstzrange(data_hora_inicio, data_hora_fim));
-
+-- Criar um índice GIST para otimizar consultas de intervalo de tempo
+-- O GIST agora usa a função tsrange, compatível com colunas TIMESTAMP
+CREATE INDEX idx_periodo ON agendamento USING gist (tsrange(data_hora_inicio, data_hora_fim));
 
