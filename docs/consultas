@@ -1,0 +1,47 @@
+--não foram testados
+
+
+--salas livres | Melhorar dps
+select * from sala as s where s.id not in (select id_sala from agendamento) 
+
+--filtros relacionados a salas
+
+--filtro prédio
+select * from sala as s where 
+s.predio = ?
+
+--filtro tipo de sala
+select * from sala as s where 
+s.tipo = ?
+
+
+
+--Filtro por tipo de evento
+SELECT * 
+FROM agendamento 
+JOIN evento 
+ON agendamento.id_evento = evento.id
+AND
+evento.tipo = 'seminário'
+
+--filtros por data
+
+--salas livres - entre datas
+SELECT * 
+FROM sala AS s
+WHERE s.id NOT IN (
+    SELECT id_sala 
+    FROM agendamento AS a
+    WHERE 
+        a.data_hora_inicio < ? AND a.data_hora_fim > ?
+);
+
+--Salas ocupadas
+SELECT * 
+FROM agendamento AS a
+WHERE a.data_hora_inicio < ?
+  AND a.data_hora_fim > ?;
+
+
+
+
