@@ -1,17 +1,23 @@
 package com.ufsm.politecnico.model.sala;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.ufsm.politecnico.model.agendamento.Agendamento;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "sala")
@@ -19,6 +25,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Sala {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -36,10 +43,7 @@ public class Sala {
     @Column(name = "capacidade", nullable = false)
     private int capacidade;
 
-    @Override
-    public String toString(){
-        return new String(this.getNome() +
-        this.getPredio() + this.getCapacidade() +
-        this.getTipo() + this.getId());
-    }
+    //relacionamento com agendamento 1:N
+    @OneToMany(mappedBy = "sala", cascade = CascadeType.ALL)
+    private List<Agendamento> agendamentos;
 }
