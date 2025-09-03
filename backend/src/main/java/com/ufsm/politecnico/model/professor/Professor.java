@@ -1,12 +1,17 @@
 package com.ufsm.politecnico.model.professor;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.ufsm.politecnico.model.evento.Evento;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +25,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Professor{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -37,10 +43,7 @@ public class Professor{
     @Column(name = "matricula", nullable = false)
     private String matricula;
 
-    @Override
-    public String toString(){
-        return new String(this.getNome() + this.getEmail()
-        + this.getMatricula() + this.getSenha() +
-        this.getId());
-    }
+    //Relacionamento com eventos, evento em cascatas para crud
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL )
+    private List<Evento> eventos;
 }
