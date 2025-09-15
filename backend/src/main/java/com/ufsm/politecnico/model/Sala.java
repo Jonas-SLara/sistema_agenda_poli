@@ -1,46 +1,52 @@
-package com.ufsm.politecnico.model.sala;
+package com.ufsm.politecnico.model;
 
 import java.util.List;
-import java.util.UUID;
-
-import com.ufsm.politecnico.model.agendamento.Agendamento;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Entity
-@Table(name = "sala")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@EqualsAndHashCode(of = "id")
+
+@Entity
+@Table(name = "sala")
 public class Sala {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Size(min=3, max=5, message = "deve ter exatamente 3 a 5 char")
     private String nome;
 
-    @Column(name = "tipo", nullable = false)
-    private String tipo;
+    @NotBlank
+    @Enumerated(EnumType.STRING)
+    private TipoSala tipo;
 
-    @Column(name = "predio", nullable = false)
+    @NotBlank
+    @Size(min = 2, max = 8, message = "deve ter 2 a 8 char")
     private String predio;
 
-    @Column(name = "capacidade", nullable = false)
+    @Min(1)
     private int capacidade;
 
     //relacionamento com agendamento 1:N

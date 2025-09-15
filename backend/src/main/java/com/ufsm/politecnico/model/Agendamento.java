@@ -1,12 +1,6 @@
-package com.ufsm.politecnico.model.agendamento;
+package com.ufsm.politecnico.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
-
-import org.springframework.cglib.core.Local;
-
-import com.ufsm.politecnico.model.evento.Evento;
-import com.ufsm.politecnico.model.sala.Sala;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,23 +11,35 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name="agendamento")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@EqualsAndHashCode(of="id")
+
+@Entity
+@Table(
+    name="agendamento",
+    uniqueConstraints = {
+        @UniqueConstraint(
+            name="unique_agenda",
+            columnNames = {"id_sala", "data_hora_inicio", "data_hora_fim"}
+        )
+    }
+)
+
 public class Agendamento{
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "data_hora_inicio", nullable = false)
     private LocalDateTime dataHoraInicio;
@@ -50,6 +56,5 @@ public class Agendamento{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_evento", nullable = false)
     private Evento evento;
-
 
 }
