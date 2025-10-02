@@ -1,2 +1,8 @@
 .vscode
-node_modules/
+
+venv
+.venv
+site
+
+target
+

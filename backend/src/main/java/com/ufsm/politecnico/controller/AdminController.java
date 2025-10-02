@@ -2,19 +2,20 @@ package com.ufsm.politecnico.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufsm.politecnico.model.Admin;
+import com.ufsm.politecnico.dto.AdminDTO;
 import com.ufsm.politecnico.service.AdminService;
 
 import jakarta.validation.Valid;
 
-import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 
@@ -29,17 +30,24 @@ public class AdminController {
         this.adminService=adminService;
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<Admin>> lista() {
-        List<Admin> dados = adminService.listar();
-        return ResponseEntity.ok(dados);
+    //alterar o admin
+    @PutMapping
+    public ResponseEntity<Boolean> editar(@RequestParam UUID uuid, @Valid @RequestBody AdminDTO admin) {
+        boolean status = adminService.edit(uuid, admin);
+        return ResponseEntity.status(HttpStatus.OK).body(status);
     }
 
-    @PostMapping("/")
-    public  ResponseEntity<Admin> save(@Valid @RequestBody Admin admin) {
-        Admin adm = adminService.saveAdmin(admin);
-        return ResponseEntity.status(201).body(adm);
+    //autenticar o admin
+    @PostMapping("/login")
+    public ResponseEntity<AdminDTO> postMethodName(
+            @RequestParam String email,
+            @RequestParam String senha){
+        
+        AdminDTO a = this.adminService.autentica(email, senha);
+
+        return (a!=null)? 
+        ResponseEntity.ok().body(a):
+        ResponseEntity.notFound().build();
     }
-    
     
 }

@@ -12,11 +12,13 @@ ___
 ### **DEPLOY**
    1. [deploy do backend](#deploy-backend)
 
+### UML
+   1. [diagrama casos de uso](#uml)
+
 ### **BACKEND**
    1. [modeloER](#modelo-er)
    2. [Funcionalidades](#funcionalidades)
    3. [regras](#regras)
-   4. [documentação da api](#documentação)
 
 ### **FRONTEND**
    1. [figma](#link-figma)
@@ -70,6 +72,10 @@ colocando o nome do host como o nome do container do banco ou seu endereço ip, 
 ![interface gráfica do pgadmin web](/docs/adminAgendaServer.png.png)
 ___
 
+## **UML**
+### Diagramas de casos de uso
+![diagrama de casos de uso](/docs/CasosDeUso.drawio(1).png)
+
 ## **BACKEND**
 
 ### modelo ER
@@ -93,10 +99,6 @@ não entrará em conflito com horário a outro evento
 - [ ] os professores não podem editar nem excluir agendamentos depois que a data do evento passar da data atual, afim de preservar o histórico
 - [ ] os professores e o administrador devem ser autenticados com credenciais próprias
 ___
-
-### documentação
-
-uso do spring swagger
 
 ## **FRONTEND**
 
