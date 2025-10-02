@@ -1,0 +1,62 @@
+name: Deploy Docs
+
+# Este workflow é acionado quando você faz push para a branch 'main'
+on:
+  push:
+    branches:
+      - main
+  # Permite que você execute o workflow manualmente
+  workflow_dispatch:
+
+# Permissões necessárias para que o GitHub Actions consiga fazer o deploy
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permissões para que o GitHub Pages saiba onde está o site (ambiente de 'github-pages')
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # O Job de 'build' (construção)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Configura o ambiente Python (necessário para rodar o MkDocs)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Instala o MkDocs (e quaisquer plugins que você use, se for o caso)
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material # Adicione aqui outros plugins se usar
+          
+      # Constrói a documentação (os arquivos HTML vão para a pasta 'site')
+      - name: Build MkDocs Site
+        run: mkdocs build
+      
+      # Cria um artefato (pacote de arquivos) para o próximo passo
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site # A pasta onde o MkDocs gerou o site
+
+  # O Job de 'deploy' (publicação) - precisa do artefato gerado acima
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Garante que só roda depois da construção
+    steps:
+      # De fato publica o artefato no GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
